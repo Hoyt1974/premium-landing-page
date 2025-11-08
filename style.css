@@ -2,79 +2,72 @@
   --bg:#0f172a; --ink:#e2e8f0; --muted:#94a3b8;
   --brand:#22c55e; --dark:#0b1223; --border:#1f2937;
 }
+
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
-     line-height:1.55;color:var(--ink);background:var(--bg)}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block;border-radius:12px}
-
-.nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
-     padding:14px 20px;background:rgba(15,23,42,.8);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--border)}
-.brand{font-weight:700;letter-spacing:.5px}
-.nav a{margin-left:14px;color:var(--muted)}
-.nav .btn{padding:8px 14px;border:1px solid var(--muted);border-radius:10px}
-
-.hero{min-height:64vh;display:grid;place-items:center;text-align:center;
-      background:linear-gradient(120deg,rgba(34,197,94,.15),rgba(34,197,94,0)),
-                 url('assets/hero.jpg') center/cover no-repeat;
-                 background-position: center center;
-
-      border-bottom:1px solid var(--border)}
-.hero-inner{max-width:900px;padding:60px 20px}
-.hero h1{font-size:clamp(28px,4vw,44px);margin:0 0 12px}
-.hero p{color:var(--muted);margin:0 0 20px}
-
-.btn{display:inline-block;border-radius:12px;padding:10px 16px}
-.btn-primary{background:var(--brand);color:#06120a;font-weight:700}
-
-.section{padding:54px 20px;max-width:1100px;margin:0 auto}
-.section h2{font-size:clamp(22px,3.2vw,34px);margin:0 0 18px}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.card{background:linear-gradient(180deg,#111827,#0b1223);border:1px solid var(--border);border-radius:16px;padding:18px}
-
-.alt{background:linear-gradient(180deg,#0b1223,#0a0f1c)}
-/* --- Uniform gallery image sizing --- */
-.work {
-  display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+body{
+  margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+  line-height:1.55; color:var(--ink); background:var(--bg);
 }
+a{color:inherit; text-decoration:none}
+img{max-width:100%; display:block; border-radius:12px}
 
-.work .shot {
-  margin: 0;
-  overflow: hidden;
-  border-radius: 14px;
-  background: #111827;
-  aspect-ratio: 4 / 3; /* keeps every image same height ratio */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+.nav{
+  position:sticky; top:0; z-index:50; display:flex; justify-content:space-between;
+  padding:14px 20px; background:rgba(15,23,42,.85); backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid var(--border);
 }
+.brand{font-weight:700; letter-spacing:.5px}
+.nav .btn{margin-left:12px}
 
-.work .shot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* crops edges but keeps proportions */
-  transition: transform 0.4s ease;
+.hero{
+  min-height:68vh; display:grid; place-items:center; text-align:center;
+  background:
+    linear-gradient(120deg, rgba(8,12,22,.6), rgba(8,12,22,.1)),
+    url('assets/hero.jpg') center/cover no-repeat;
+  border-bottom:1px solid var(--border);
 }
+.hero-inner{max-width:980px; padding:60px 20px}
+.hero h1{font-size:clamp(28px, 4vw, 46px); margin:0 0 12px}
+.hero p{color:var(--muted); margin:0 0 20px}
 
-.work .shot:hover img {
-  transform: scale(1.05); /* subtle zoom effect */
+.btn{display:inline-block; border-radius:12px; padding:12px 16px; font-weight:700}
+.btn-primary{background:var(--brand); color:#081e10}
+
+.section{padding:54px 20px; max-width:1100px; margin:0 auto}
+.section h2{font-size:clamp(22px, 3vw, 32px); margin:0 0 18px}
+.grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:linear-gradient(180deg,#0b1223,#0b1223); border:1px solid var(--border); padding:18px; border-radius:14px}
+
+.note{color:var(--muted); font-size:.92rem}
+
+.work{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.work__shot{margin:0; overflow:hidden; border-radius:14px; background:#111827; aspect-ratio:4/3; display:flex; flex-direction:column; justify-content:flex-end}
+.work__shot img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease}
+.work__shot:hover img{transform:scale(1.05)}
+.work__shot figcaption{color:var(--muted); font-size:.9rem; padding:6px 8px; text-align:center}
+
+.video-wrap{aspect-ratio:16/9; background:#0b1223; border:1px solid var(--border); border-radius:14px; overflow:hidden}
+.video-wrap iframe{width:100%; height:100%; display:block}
+
+/* CLICKABLE SIGN OVERLAY — adjust box if needed for your hero image.
+   If you don’t want it, simply comment out the <a class="sign-link"> in HTML. */
+.sign-link{
+  position:absolute; /* positioned relative to header */
+  left:6%; bottom:18%; /* tweak these to sit on your H sign */
+  width:74px; height:74px;
+  border:2px solid rgba(255,255,255,.18);
+  border-radius:10px;
+  box-shadow:0 0 0 2px rgba(34,197,94,.35) inset;
+  transition:transform .2s ease, box-shadow .2s ease;
 }
+.sign-link:hover{transform:scale(1.05); box-shadow:0 0 0 2px rgba(34,197,94,.75) inset}
 
-.work figcaption {
-  color: var(--muted);
-  font-size: 0.9rem;
-  padding: 6px 0 0;
-  text-align: center;
+.contact{
+  display:grid; gap:12px; max-width:520px;
 }
-
-.contact{display:grid;gap:12px;max-width:520px}
-.contact input,.contact textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:#0b1223;color:var(--ink)}
-.contact button{cursor:pointer}
-.note{min-height:1.2em;color:var(--muted)}
-.small{font-size:.9rem}
-
-.footer{padding:24px 20px;text-align:center;color:var(--muted);border-top:1px solid var(--border);background:var(--dark)}
-
-@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+.contact input,.contact textarea{
+  background:#0b1223; color:var(--ink); border:1px solid var(--border);
+  border-radius:10px; padding:12px; outline:none;
+}
+.footer{padding:28px; text-align:center; color:var(--muted); border-top:1px solid var(--border)}
+@media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto} }
